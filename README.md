@@ -1,14 +1,47 @@
+## Project Setup
 
-## Available Scripts
+To launch this project, follow these steps:
 
-In the project directory, you can run:
+1. Open the folder with the previously downloaded repository.
 
-### `npm run dev`
-or
-### `yarn run dev`
+    a. In this folder, run the following command in the terminal:
 
-Runs the app in the development mode.\
-(FrondEnd and BackEnd)
+        ```bash
+        npm install
+        ```
+
+        or
+
+        ```bash
+        yarn install
+        ```
+
+    b. Run the command `cd frontend` in the terminal, and then execute the following command:
+
+        ```bash
+        npm install
+        ```
+
+        or
+
+        ```bash
+        yarn install
+        ```
+
+2. In the terminal from the root folder "bikebooking", run the command:
+
+    ```bash
+    npm run dev
+    ```
+
+    or
+
+    ```bash
+    yarn run dev
+    ```
+
+    This command runs the app in development mode.
+
+### FrontEnd and BackEnd
 
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
