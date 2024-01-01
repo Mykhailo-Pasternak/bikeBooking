@@ -3,15 +3,14 @@ import { Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
 interface BikeFormFieldProps {
-    label: string;
+    placeholder: string;
     name: string;
     type?: string;
 }
 
-const BikeFormField: React.FC<BikeFormFieldProps> = ({ label, name, type = 'text' }) => (
+const BikeFormField: React.FC<BikeFormFieldProps> = ({ placeholder, name, type = 'text' }) => (
     <div>
-        <label>{label}:</label>
-        <Field type={type} name={name} />
+        <Field type={type} name={name} placeholder={placeholder} />
         <ErrorMessage name={name} component="div" className="error-message" />
     </div>
 );

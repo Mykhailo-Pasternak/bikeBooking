@@ -21,14 +21,18 @@ interface BikeFormProps {
     bikes: Bike[];
 }
 
+type FormValue = {
+    [K in keyof Bike]: K extends 'wheelSize' | 'price' ? number | string : Bike[K];
+};
+
 const BikeForm: React.FC<BikeFormProps> = ({ onSave, bikes }) => {
     const [isDuplicateId, setIsDuplicateId] = useState(false);
 
-    const onSubmit = (values: Bike, { resetForm }: { resetForm: () => void }) => {
+    const onSubmit = (values: FormValue, { resetForm }: { resetForm: () => void }) => {
         const isUnique = bikes.every((bike) => bike.id !== values.id);
 
         if (isUnique) {
-            onSave(values);
+            onSave(values as Bike);
             resetForm();
             setIsDuplicateId(false);
         } else {
@@ -42,8 +46,8 @@ const BikeForm: React.FC<BikeFormProps> = ({ onSave, bikes }) => {
                 name: '',
                 type: '',
                 color: '',
-                wheelSize: 0,
-                price: 0,
+                wheelSize: '',
+                price: '',
                 id: '',
                 description: '',
                 status: 'Available'
@@ -52,15 +56,16 @@ const BikeForm: React.FC<BikeFormProps> = ({ onSave, bikes }) => {
             onSubmit={onSubmit}
         >
             <Form>
-                <BikeFormField label="Name" name="name" />
-                <BikeFormField label="Type" name="type" />
-                <BikeFormField label="Color" name="color" />
-                <BikeFormField label="Wheel size" name="wheelSize" />
-                <BikeFormField label="Price" name="price" />
-                <BikeFormField label="ID" name="id" />
+                <BikeFormField placeholder="Name" name="name" />
+                <BikeFormField placeholder="Type" name="type" />
+                <BikeFormField placeholder="Color" name="color" />
+                <BikeFormField placeholder="Wheel size" name="wheelSize" />
+
+                <BikeFormField placeholder="Price" name="price" />
+                <BikeFormField placeholder="ID" name="id" />
                 {isDuplicateId && <p style={{ color: 'red' }}>Bike ID must be unique.</p>}
 
-                <BikeFormField label="Description" name="description" />
+                <BikeFormField placeholder="Description" name="description" />
 
                 <button type="submit">Save</button>
                 <button type="reset">Clear</button>

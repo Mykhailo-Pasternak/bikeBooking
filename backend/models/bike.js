@@ -30,6 +30,10 @@ const bikeSchema = new Schema({
         type: String,
         required: true,
     },
+    status: {
+        type: String,
+        required: true,
+    },
 }, { timestamps: true });
 
 const Bike = mongoose.model('Bike', bikeSchema);
