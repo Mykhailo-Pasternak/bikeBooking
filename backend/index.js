@@ -17,7 +17,7 @@ app.listen(PORT, (error) => {
 });
 
 app.get('/api', (req, res) => {
-    res.json({ message: `hello from backend` });
+    res.send([]);
 });
 
 app.post('/add-bike', (req, res) => {
