@@ -1,3 +1,7 @@
+Video demonstrating how this application works can be viewed at the following link: [link]([http://localhost:3000](https://www.loom.com/share/242857d6cead4111aecee685985f3b55?sid=6c5c7795-d7e3-48f3-b362-7ecd9953b01e))
+or
+https://www.loom.com/share/242857d6cead4111aecee685985f3b55?sid=6c5c7795-d7e3-48f3-b362-7ecd9953b01e
+
 ## Project Setup
 
 To launch this project, follow these steps:
