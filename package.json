@@ -11,7 +11,7 @@
     "dev:backend": "nodemon backend/index.js",
     "dev:frontend": "npm start --prefix frontend"
   },
-  "author": "",
+  "author": "Mykhailo Pasternak",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

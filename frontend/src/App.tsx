@@ -3,6 +3,9 @@ import BikeForm from './components/form/BikeForm';
 import axios from 'axios';
 import BikeList from './components/bikeList/BikeList';
 import Statistics from './components/statistics/Statistics';
+import { StyledApp, StyledBikeList, StyledFormEndStatistics, StyledRoot, Wrapper, } from './app.style';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 export interface Bike {
   id: string;
   name: string;
@@ -13,6 +16,8 @@ export interface Bike {
   description: string;
   status: 'Available' | 'Busy' | 'Unavailable';
 }
+
+
 
 const App: React.FC = () => {
   const [bikes, setBikes] = useState<Bike[]>([]);
@@ -64,12 +69,22 @@ const App: React.FC = () => {
 
   return (
     <div>
-      <BikeForm onSave={handleSave} bikes={bikes} />
-      <Statistics bikes={bikes} />
-      {loading && <div>Loading...</div>}
+      <Header />
+      <StyledApp>
+        <Wrapper>
+          <StyledBikeList>
+            {loading && <div>Loading...</div>}
 
-      {error && <div>{error}</div>}
-      {bikes.length > 0 && <BikeList bikes={bikes} onStatusChange={handleStatusChange} onDelete={handleDelete} />}
+            {error && <div>{error}</div>}
+            {bikes.length > 0 && <BikeList bikes={bikes} onStatusChange={handleStatusChange} onDelete={handleDelete} />}
+          </StyledBikeList>
+          <StyledFormEndStatistics>
+            <BikeForm onSave={handleSave} bikes={bikes} />
+            <Statistics bikes={bikes} />
+          </StyledFormEndStatistics>
+        </Wrapper>
+      </StyledApp>
+      <Footer />
     </div>
   );
 };
