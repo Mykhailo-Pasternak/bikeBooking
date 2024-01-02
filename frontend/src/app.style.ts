@@ -7,7 +7,7 @@ export const StyledApp = styled.div`
   background-color: white;
   max-width: 1152px;
   width: 100%;
-  height: 100vh;
+  max-height: 700px;
   margin: 0 auto;
 `;
 
@@ -16,14 +16,13 @@ export const Wrapper = styled.div`
 `;
 
 export const StyledBikeList = styled.div`
- max-width: 639;
-  width: 100%;
+  width: 639px;
   border-right: 1px solid #C4C4C4;
-  height: 100vh;
+  max-height: 600px;
+  overflow-y: auto;
 `;
 export const StyledFormEndStatistics = styled.div`
-   max-width: 513;
-   width: 100%;
+   width: 513px;
    display: flex;
    flex-direction: column;
    margin-left: 10px;

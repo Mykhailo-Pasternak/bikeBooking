@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'Saira', sans-serif; 
     background: #e6e6e6;
+    overflow-x: hidden;
   }
 `;
 

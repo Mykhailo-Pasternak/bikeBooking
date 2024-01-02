@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Formik, Field, Form, useFormikContext, ErrorMessage } from 'formik';
+import { Formik, Form, } from 'formik';
 import * as Yup from 'yup';
 import { Bike } from '../../App';
 import BikeFormField from './BikeFormField';
+import { Button, ErrorMessage, FormFieldsWrapper, WrapButtons, Wrapper } from './bikeForm.styled';
 
 
 const validationSchema = Yup.object().shape({
@@ -41,36 +42,41 @@ const BikeForm: React.FC<BikeFormProps> = ({ onSave, bikes }) => {
     };
 
     return (
-        <Formik
-            initialValues={{
-                name: '',
-                type: '',
-                color: '',
-                wheelSize: '',
-                price: '',
-                id: '',
-                description: '',
-                status: 'Available'
-            }}
-            validationSchema={validationSchema}
-            onSubmit={onSubmit}
-        >
-            <Form>
-                <BikeFormField placeholder="Name" name="name" />
-                <BikeFormField placeholder="Type" name="type" />
-                <BikeFormField placeholder="Color" name="color" />
-                <BikeFormField placeholder="Wheel size" name="wheelSize" />
+        <Wrapper>
+            <Formik
+                initialValues={{
+                    name: '',
+                    type: '',
+                    color: '',
+                    wheelSize: '',
+                    price: '',
+                    id: '',
+                    description: '',
+                    status: 'Available'
+                }}
+                validationSchema={validationSchema}
+                onSubmit={onSubmit}
+            >
+                <Form>
+                    <FormFieldsWrapper>
+                        <BikeFormField placeholder="Name" name="name" />
+                        <BikeFormField placeholder="Type" name="type" />
+                        <BikeFormField placeholder="Color" name="color" />
+                        <BikeFormField placeholder="Wheel size" name="wheelSize" />
+                        <BikeFormField placeholder="Price" name="price" />
+                        <BikeFormField placeholder="ID" name="id" />
+                        {isDuplicateId && <ErrorMessage>Bike ID must be unique.</ErrorMessage>}
 
-                <BikeFormField placeholder="Price" name="price" />
-                <BikeFormField placeholder="ID" name="id" />
-                {isDuplicateId && <p style={{ color: 'red' }}>Bike ID must be unique.</p>}
+                        <BikeFormField placeholder="Description" name="description" />
+                    </FormFieldsWrapper>
+                    <WrapButtons>
+                        <Button type="submit">Save</Button>
+                        <Button type="reset">Clear</Button>
+                    </WrapButtons>
+                </Form>
+            </Formik>
+        </Wrapper>
 
-                <BikeFormField placeholder="Description" name="description" />
-
-                <button type="submit">Save</button>
-                <button type="reset">Clear</button>
-            </Form>
-        </Formik>
     );
 };
 
