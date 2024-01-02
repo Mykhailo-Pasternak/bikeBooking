@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import BikeForm from './components/form/BikeForm';
-
+import axios from 'axios';
 export interface Bike {
   id: string;
   name: string;
@@ -61,26 +61,44 @@ const BikeList: React.FC<{
 const App: React.FC = () => {
   const [bikes, setBikes] = useState<Bike[]>([]);
 
+  const fetchBikes = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/bikes');
+      setBikes(response.data);
+    } catch (error) {
+      console.error('Error during GET request:', error);
+    }
+  };
+
   useEffect(() => {
-    fetch('/api')
-      .then((res) => res.json())
-      .then((res) => {
-        setBikes(res);
-      });
+    fetchBikes();
   }, []);
 
-  const handleSave = (newBike: Bike) => {
-    setBikes((prevBikes) => [...prevBikes, newBike]);
+  const handleSave = async (newBike: Bike) => {
+    try {
+      const response = await axios.post('http://localhost:3001/add-bike', newBike);
+      fetchBikes()
+    } catch (error) {
+      console.error('Error during POST request:', error);
+    }
   };
 
-  const handleStatusChange = (id: string, newStatus: 'Available' | 'Busy' | 'Unavailable') => {
-    setBikes((prevBikes) =>
-      prevBikes.map((bike) => (bike.id === id ? { ...bike, status: newStatus } : bike))
-    );
+  const handleStatusChange = async (id: string, newStatus: 'Available' | 'Busy' | 'Unavailable') => {
+    try {
+      await axios.patch(`http://localhost:3001/update-bike-status/${id}`, { status: newStatus });
+      fetchBikes()
+    } catch (error) {
+      console.error('Error during PATCH request:', error);
+    }
   };
 
-  const handleDelete = (id: string) => {
-    setBikes((prevBikes) => prevBikes.filter((bike) => bike.id !== id));
+  const handleDelete = async (id: string) => {
+    try {
+      await axios.delete(`http://localhost:3001/delete-bike/${id}`);
+      fetchBikes()
+    } catch (error) {
+      console.error('Error during DELETE request:', error);
+    }
   };
 
   return (
