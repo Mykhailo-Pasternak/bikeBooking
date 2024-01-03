@@ -1,8 +1,5 @@
 Video demonstrating how this application works can be viewed at the following link: [https://www.loom.com/share/242857d6cead4111aecee685985f3b55?sid=6c5c7795-d7e3-48f3-b362-7ecd9953b01e](https://www.loom.com/share/6044ca89173a4d7e9141d4c9d37c7e53?sid=5aad572a-b51f-4069-8d88-09ca386e7313)
 
-or
-
-https://www.loom.com/share/6044ca89173a4d7e9141d4c9d37c7e53?sid=5aad572a-b51f-4069-8d88-09ca386e7313
 ## Project Setup
 
 To launch this project, follow these steps:
