@@ -15,8 +15,6 @@ const validationSchema = Yup.object().shape({
     id: Yup.string().required('ID is required').min(5, 'ID should be at least 5 characters'),
     description: Yup.string().required('Description is required').min(5, 'Description should be at least 5 characters'),
 });
-
-
 interface BikeFormProps {
     onSave: (bike: Bike) => void;
     bikes: Bike[];
@@ -67,8 +65,8 @@ const BikeForm: React.FC<BikeFormProps> = ({ onSave, bikes }) => {
                         <BikeFormField placeholder="ID" name="id" />
                         {isDuplicateId && <ErrorMessage>Bike ID must be unique.</ErrorMessage>}
 
-                        <BikeFormField placeholder="Description" name="description" />
                     </FormFieldsWrapper>
+                    <BikeFormField placeholder="Description" name="description" />
                     <WrapButtons>
                         <Button type="submit">Save</Button>
                         <Button type="reset">Clear</Button>
